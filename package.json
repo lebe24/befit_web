@@ -1,9 +1,9 @@
 {
-  "name": "nextjs-notion-waitlist-template",
+  "name": "befit waiting list",
   "version": "1.5.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -30,6 +30,7 @@
     "react-email": "2.1.4",
     "react-icons": "^5.2.1",
     "resend": "^3.3.0",
+    "sharp": "^0.33.0",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
