@@ -11,10 +11,7 @@ export default function Footer() {
       animate="visible"
       className="mt-auto flex w-full items-center justify-center gap-2 border-t border-gray-800 bg-black p-6 text-gray-400 md:justify-center">
       <motion.div variants={itemVariants} className="flex items-center gap-2">
-        <p>Brought to you by BEFIT Team
-        
-        </p>
-        
+        <p>Brought to you by BEFIT Team</p>
       </motion.div>
     </motion.div>
   );
