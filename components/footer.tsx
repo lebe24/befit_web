@@ -1,18 +1,90 @@
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "@/lib/animation-variants";
 import Image from "next/image";
+
+const YEAR = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="mt-auto flex w-full items-center justify-center gap-2 border-t border-gray-800 bg-black p-6 text-gray-400 md:justify-center">
-      <motion.div variants={itemVariants} className="flex items-center gap-2">
-        <p>Brought to you by BEFIT Team</p>
-      </motion.div>
-    </motion.div>
+    <footer className="border-t border-ink-line bg-ink-raised">
+      <div className="mx-auto max-w-shell px-5 py-14 md:px-10 md:py-16">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-xs">
+            <div className="relative h-8 w-28">
+              <Image
+                src="/image/befit_logo.png"
+                alt="BeFit AI"
+                fill
+                className="object-contain object-left"
+                sizes="112px"
+              />
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-bone-dim">
+              An AI personal trainer that rebuilds your plan around the sessions
+              you actually complete.
+            </p>
+          </div>
+
+          <nav className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+            <div>
+              <p className="label mb-4">Product</p>
+              <ul className="flex flex-col gap-3">
+                {[
+                  ["Method", "#method"],
+                  ["Features", "#features"],
+                  ["Pricing", "#pricing"],
+                  ["FAQ", "#faq"],
+                ].map(([l, h]) => (
+                  <li key={h}>
+                    <a
+                      href={h}
+                      className="text-sm text-bone-dim transition-colors hover:text-acid"
+                    >
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="label mb-4">Legal</p>
+              <ul className="flex flex-col gap-3">
+                {[
+                  ["Terms of Use", "/terms"],
+                  ["Privacy Policy", "/privacy"],
+                ].map(([l, h]) => (
+                  <li key={h}>
+                    <a
+                      href={h}
+                      className="text-sm text-bone-dim transition-colors hover:text-acid"
+                    >
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="label mb-4">Contact</p>
+              <ul className="flex flex-col gap-3">
+                <li>
+                  <a
+                    href="mailto:support@befit.ai"
+                    className="text-sm text-bone-dim transition-colors hover:text-acid"
+                  >
+                    support@befit.ai
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div className="mt-14 flex flex-col gap-3 border-t border-ink-line pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="label">© {YEAR} BeFit AI</p>
+          <p className="label">Built for people who show up</p>
+        </div>
+      </div>
+    </footer>
   );
 }

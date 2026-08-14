@@ -2,81 +2,185 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+/*
+  BeFit AI — "athletic technical"
+  Near-black canvas, acid lime signal, condensed editorial type.
+  The lime is #CCFF00, carried over from the iOS app so the brand reads
+  continuously from App Store listing to landing page.
+*/
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+:root {
+  --ink: #08090b;
+  --ink-raised: #0e1014;
+  --ink-line: #1c1f26;
+  --bone: #f4f2ec;
+  --bone-dim: #8b8d93;
+  --acid: #ccff00;
+  --ember: #ff5a1f;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
+  --edge: 1px solid var(--ink-line);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--ink-line);
   }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background: var(--ink);
+    color: var(--bone);
+    font-feature-settings: "ss01", "cv01";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--acid);
+    color: #000;
+  }
+
+  /* Thin, unobtrusive — the page is dense enough already. */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ink-line);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a2e37;
   }
 }
 
-body {
-  ::selection {
-    @apply bg-accent text-yellow-200;
+@layer components {
+  /* Eyebrow / data label — mono, tracked out, always paired with a rule. */
+  .label {
+    @apply font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--bone-dim)];
+  }
+
+  /* Oversized condensed display type. clamp() carries it from phone to
+     ultrawide without a single breakpoint. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+
+  .rule {
+    @apply h-px w-full bg-[var(--ink-line)];
+  }
+
+  /* Outlined numeral used to index sections — sits behind content. */
+  .numeral {
+    font-family: var(--font-display);
+    font-weight: 800;
+    -webkit-text-stroke: 1px var(--ink-line);
+    color: transparent;
+    line-height: 0.75;
+  }
+}
+
+/* ── Film grain ──────────────────────────────────────────────────────────────
+   A single fixed SVG noise layer over the whole document. Keeps flat blacks
+   from banding on large gradients and gives the page a printed texture. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  animation: grain-shift 700ms steps(2) infinite;
+}
+
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-2%, 1.5%);
+  }
+  100% {
+    transform: translate(1.5%, -1%);
+  }
+}
+
+/* ── Marquee ─────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Entrance ────────────────────────────────────────────────────────────── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.rise {
+  animation: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.wipe {
+  animation: wipe 1100ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+/* Diagonal hairline field used behind the pricing block. */
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--ink-line) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .grain::after {
+    animation: none;
   }
 }

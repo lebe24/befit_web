@@ -1,43 +1,84 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
+import type { Metadata, Viewport } from "next";
+import { Big_Shoulders_Display, Chivo, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
-const FigtreeFont = Figtree({ subsets: ["latin"] });
+/* Condensed athletic display — carries the oversized headlines. */
+const display = Big_Shoulders_Display({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+/* Grotesque with enough character to avoid the default-UI look. */
+const body = Chivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+/* Data labels, eyebrows, stat readouts. */
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const SITE = "https://befit.ai";
 
 export const metadata: Metadata = {
-  title: "BEFIT AI",
+  metadataBase: new URL(SITE),
+  title: {
+    default: "BeFit AI — Your personal trainer, in your pocket",
+    template: "%s · BeFit AI",
+  },
   description:
-    "Befit ai waitlist to get 15% off when we launch.",
+    "AI-built training plans that adapt to how you actually train. Log a session in seconds, track every lift, and get coaching that changes as you do.",
+  keywords: [
+    "AI personal trainer",
+    "workout app",
+    "fitness tracking",
+    "adaptive training plan",
+    "strength training app",
+  ],
+  openGraph: {
+    type: "website",
+    url: SITE,
+    siteName: "BeFit AI",
+    title: "BeFit AI — Your personal trainer, in your pocket",
+    description:
+      "AI-built training plans that adapt to how you actually train. Coaching that changes as you do.",
+    images: [{ url: "/opengraph-image.png", width: 1280, height: 832 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BeFit AI — Your personal trainer, in your pocket",
+    description:
+      "AI-built training plans that adapt to how you actually train.",
+    images: ["/twitter-image.png"],
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#08090B",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <meta property="og:image" content="/opengraph-image.png" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="1280" />
-      <meta property="og:image:height" content="832" />
-      <meta
-        property="og:site_name"
-        content="Next.js + Notion — Waitlist Template"
-      />
-      <meta
-        property="og:url"
-        content="https://nextjs-notion-waitlist.vercel.app/"
-      />
-      <meta name="twitter:image" content="/twitter-image.png" />
-      <meta name="twitter:image:type" content="image/png" />
-      <meta name="twitter:image:width" content="1280" />
-      <meta name="twitter:image:height" content="832" />
-      <body className={FigtreeFont.className}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="grain bg-ink font-sans text-bone antialiased">
         {children}
-        <Toaster richColors position="top-center" />
         <Analytics />
       </body>
     </html>
