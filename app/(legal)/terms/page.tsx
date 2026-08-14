@@ -1,10 +1,10 @@
-import LegalShell from "../legal-shell";
+import PageShell from "@/components/page-shell";
 
 export const metadata = { title: "Terms of Use" };
 
 export default function TermsPage() {
   return (
-    <LegalShell title="Terms of Use">
+    <PageShell eyebrow="Legal" title="Terms of Use">
       {/* TODO: replace with the reviewed Terms of Use.
           Apple requires a working link to these before a subscription app
           passes review, and the text must cover auto-renewal, cancellation
@@ -24,6 +24,6 @@ export default function TermsPage() {
         manage or cancel a subscription at any time in your App Store account
         settings.
       </p>
-    </LegalShell>
+    </PageShell>
   );
 }

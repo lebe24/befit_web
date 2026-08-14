@@ -1,10 +1,10 @@
-import LegalShell from "../legal-shell";
+import PageShell from "@/components/page-shell";
 
 export const metadata = { title: "Privacy Policy" };
 
 export default function PrivacyPage() {
   return (
-    <LegalShell title="Privacy Policy">
+    <PageShell eyebrow="Legal" title="Privacy Policy">
       {/* TODO: replace with the reviewed Privacy Policy. It must match the
           data-collection disclosures entered in App Store Connect. */}
       <p>
@@ -21,6 +21,6 @@ export default function PrivacyPage() {
         is not sold, and it is not shared with advertisers. Account deletion is
         available from inside the app and removes your data with it.
       </p>
-    </LegalShell>
+    </PageShell>
   );
 }
