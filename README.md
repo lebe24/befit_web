@@ -24,12 +24,9 @@ and no database. It is entirely static.
 
 ## Before launch
 
-- **`components/pricing.tsx`** — the `PRICE` constant is a placeholder. It must
-  match the products in App Store Connect that back the RevenueCat offering,
-  or the page advertises a price the purchase sheet does not charge.
-- **`app/(legal)/terms`, `app/(legal)/privacy`** — these deliberately contain no
-  legal copy. Apple requires working links to both for a subscription app, and
-  the text has to describe what the app actually collects.
-- **`components/download.tsx`** — the App Store URL is a placeholder.
+- **`components/download.tsx`** — the App Store URL is a placeholder. The real
+  one uses the app's Apple ID, `6786780641`.
+- **`components/pricing.tsx`** — `PRICE.monthly` is still unconfirmed. The app's
+  own fallback says $8.99 while this says $9.99; one of them is wrong.
 - **`app/layout.tsx`** — `SITE` is set to `https://befit.ai`; update if the
   production domain differs, since Open Graph URLs resolve against it.

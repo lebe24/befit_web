@@ -5,19 +5,25 @@ import { Check } from "lucide-react";
 import Reveal from "./reveal";
 
 /*
-  ⚠️ PLACEHOLDER PRICING — replace with the real App Store tiers before launch.
-  These must match the products configured in App Store Connect and mapped to
-  the RevenueCat offering ("monthly" / "yearly"), or the page will advertise a
-  price the purchase sheet does not charge.
+  These must match the products in App Store Connect that back the RevenueCat
+  offering ("monthly" / "yearly"), or the page advertises a price the purchase
+  sheet does not charge — which is a 3.1.2 problem, not just an embarrassing one.
+
+  The saving is derived rather than written down. "2 months free" sat here next
+  to numbers that worked out to four, because the claim and the prices were
+  edited at different times. A number that computes itself cannot drift.
 */
 const PRICE = {
-  monthly: { amount: "9.99", cadence: "month", note: "Billed monthly" },
-  yearly: {
-    amount: "59.99",
-    cadence: "year",
-    note: "Billed annually — 2 months free",
-  },
+  monthly: { amount: "9.99", cadence: "month" },
+  yearly: { amount: "79.99", cadence: "year" },
 };
+
+/** Whole months of the monthly plan covered by the yearly saving. */
+function monthsFree(): number {
+  const monthly = Number(PRICE.monthly.amount);
+  const yearly = Number(PRICE.yearly.amount);
+  return Math.round((monthly * 12 - yearly) / monthly);
+}
 
 const INCLUDED = [
   "Adaptive training plans, rebuilt every session",
@@ -31,6 +37,9 @@ const INCLUDED = [
 export default function Pricing() {
   const [annual, setAnnual] = useState(true);
   const plan = annual ? PRICE.yearly : PRICE.monthly;
+  const note = annual
+    ? `Billed annually — ${monthsFree()} months free`
+    : "Billed monthly";
 
   return (
     <section id="pricing" className="relative overflow-hidden py-24 md:py-40">
@@ -87,7 +96,7 @@ export default function Pricing() {
                     /{plan.cadence}
                   </span>
                 </div>
-                <p className="label mt-2">{plan.note}</p>
+                <p className="label mt-2">{note}</p>
               </div>
 
               <a
