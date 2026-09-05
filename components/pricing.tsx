@@ -14,7 +14,7 @@ import Reveal from "./reveal";
   edited at different times. A number that computes itself cannot drift.
 */
 const PRICE = {
-  monthly: { amount: "9.99", cadence: "month" },
+  monthly: { amount: "8.99", cadence: "month" },
   yearly: { amount: "79.99", cadence: "year" },
 };
 

@@ -26,7 +26,8 @@ and no database. It is entirely static.
 
 - **`components/download.tsx`** — the App Store URL is a placeholder. The real
   one uses the app's Apple ID, `6786780641`.
-- **`components/pricing.tsx`** — `PRICE.monthly` is still unconfirmed. The app's
-  own fallback says $8.99 while this says $9.99; one of them is wrong.
+- **`components/pricing.tsx`** — `PRICE` now matches the App Store products
+  ($8.99/month, $79.99/year). Change it here and in `billing_page.dart`'s
+  offline fallback together, or the two disagree again.
 - **`app/layout.tsx`** — `SITE` is set to `https://befit.ai`; update if the
   production domain differs, since Open Graph URLs resolve against it.
