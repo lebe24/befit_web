@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CONTACT } from "@/lib/legal";
 
 const YEAR = new Date().getFullYear();
 
@@ -82,10 +83,10 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="mailto:support@befit.ai"
+                    href={`mailto:${CONTACT}`}
                     className="text-sm text-bone-dim transition-colors hover:text-acid"
                   >
-                    support@befit.ai
+                    {CONTACT}
                   </a>
                 </li>
               </ul>

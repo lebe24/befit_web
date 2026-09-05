@@ -22,8 +22,15 @@ export const ENTITY = "BeFit AI";
  */
 export const JURISDICTION = "England and Wales";
 
-/** The support inbox. Also used on /support and in the app. */
-export const CONTACT = "support@befit.ai";
+/**
+ * The support inbox. Also used on /support, in the footer, and in the app.
+ *
+ * TEMPORARY — a personal address standing in until support@befit.ai is live.
+ * It is published in the App Store listing and on every legal page, so swap it
+ * the moment the real inbox receives mail. One edit here and one in the app's
+ * Constant.supportEmail covers everything.
+ */
+export const CONTACT = "emmanuel.philipel@yahoo.com";
 
 /** Shown as "Last updated" on both pages. Bump when the wording changes. */
 export const LAST_UPDATED = "4 September 2026";
