@@ -1,25 +1,22 @@
 /*
   The facts both legal pages depend on, in one place.
 
-  Two of these are placeholders that only the account holder can fill in, and
-  they are the difference between a document that binds and one that reads like
-  a template. Search for PLACEHOLDER before publishing.
+  These are mirrored by Constant in the Flutter app (legalEntity,
+  legalJurisdiction, legalLastUpdated, supportEmail). The two documents get
+  compared by reviewers, so a value that differs between the app and the
+  website is a finding waiting to happen — change them in both or in neither.
 */
 
 /**
  * The entity a user is contracting with.
  *
- * PLACEHOLDER — must be the registered company or the individual named on the
- * Apple Developer account, and must match the Copyright field in App Store
- * Connect and the string in components/footer.tsx.
+ * Must stay identical to the Copyright field in App Store Connect, which names
+ * the developer-account holder, and to COPYRIGHT_HOLDER in
+ * components/footer.tsx.
  */
 export const ENTITY = "BeFit AI";
 
-/**
- * Whose law governs the agreement and where disputes are heard.
- *
- * PLACEHOLDER — normally where the entity above is registered.
- */
+/** Whose law governs the agreement and where disputes are heard. */
 export const JURISDICTION = "England and Wales";
 
 /**
@@ -33,7 +30,7 @@ export const JURISDICTION = "England and Wales";
 export const CONTACT = "emmanuel.philipel@yahoo.com";
 
 /** Shown as "Last updated" on both pages. Bump when the wording changes. */
-export const LAST_UPDATED = "4 September 2026";
+export const LAST_UPDATED = "5 September 2026";
 
 /** The auto-renewing products sold in the app. */
 export const SUBSCRIPTIONS = [

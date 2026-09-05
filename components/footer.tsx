@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { CONTACT } from "@/lib/legal";
+import { CONTACT, ENTITY } from "@/lib/legal";
 
 const YEAR = new Date().getFullYear();
 
-/// The legal entity that owns the app. This must be the same string used in
-/// the App Store Connect "Copyright" field, which names the account holder —
-/// replace with your registered name or company before launch.
-const COPYRIGHT_HOLDER = "BeFit AI";
+/// The legal entity that owns the app. Must be the same string as the App
+/// Store Connect "Copyright" field, which names the developer-account holder,
+/// and as ENTITY in lib/legal.ts.
+const COPYRIGHT_HOLDER = ENTITY;
 
 export default function Footer() {
   return (

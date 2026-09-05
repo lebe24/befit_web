@@ -29,7 +29,7 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "Who you are agreeing with",
     body: [
-      `BeFit AI is provided by ${ENTITY}. In these terms, "we" and "us" mean ${ENTITY}, and "you" means the person using the app.`,
+      `These terms are an agreement between you and ${ENTITY}, who provides the BeFit AI app. "We" and "us" mean ${ENTITY}; "you" means the person using the app.`,
       <>
         If anything here is unclear, email us at <L href={`mailto:${CONTACT}`}>{CONTACT}</L> before you subscribe rather than after.
       </>,

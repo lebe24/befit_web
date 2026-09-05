@@ -22,7 +22,7 @@ const SECTIONS: LegalSection[] = [
   {
     heading: "Who handles your data",
     body: [
-      `BeFit AI is provided by ${ENTITY}, who decides how and why your personal data is processed and is responsible for it.`,
+      `${ENTITY} provides the BeFit AI app, and decides how and why your personal data is processed. That makes us responsible for it.`,
       <>
         For anything in this policy, including a request to see or delete your
         data, write to <L href={`mailto:${CONTACT}`}>{CONTACT}</L>.
