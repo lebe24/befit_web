@@ -27,7 +27,11 @@ const mono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const SITE = "https://befit.ai";
+// The live host. Open Graph and canonical URLs resolve against it, so it has
+// to be the domain actually being served — befit.ai is owned by someone else
+// and parked for sale. Vercel keeps serving this subdomain after a custom
+// domain is attached, so pointing a real domain here later breaks nothing.
+const SITE = "https://befit-web-gamma.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
