@@ -1,4 +1,5 @@
 import PageShell from "@/components/page-shell";
+import { CONTACT } from "@/lib/legal";
 
 export const metadata = {
   title: "Support",
@@ -6,7 +7,6 @@ export const metadata = {
     "Get help with BeFit AI — subscriptions, account deletion, restoring purchases, and how to reach a human.",
 };
 
-const CONTACT = "support@befit.ai";
 
 /*
   Apple checks the Support URL in App Store Connect actually loads and is
