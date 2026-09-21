@@ -1,4 +1,5 @@
 import Reveal from "./reveal";
+import { APP_STORE_URL } from "@/lib/links";
 
 /*
   Closing CTA. The headline is set as large as the hero's so the page ends on
@@ -36,7 +37,7 @@ export default function Download() {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
-              href="https://apps.apple.com/app/befit-ai"
+              href={APP_STORE_URL}
               className="group relative overflow-hidden bg-acid px-10 py-5 font-mono text-[11px] uppercase tracking-[0.2em] text-black"
             >
               <span className="absolute inset-0 -translate-y-full bg-bone transition-transform duration-300 ease-out group-hover:translate-y-0" />
