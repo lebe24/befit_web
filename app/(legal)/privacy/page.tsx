@@ -4,6 +4,7 @@ import { CONTACT, ENTITY, JURISDICTION, LAST_UPDATED } from "@/lib/legal";
 
 export const metadata = {
   title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
   description:
     "What BeFit AI collects, why, where it is stored, who it is shared with, and how to delete all of it.",
 };

@@ -29,8 +29,8 @@ const INCLUDED = [
   "Adaptive training plans, rebuilt every session",
   "Unlimited workout logging and history",
   "AI coach chat, 24/7",
-  "Photo nutrition tracking",
-  "Progress analytics and streaks",
+  "Photo calorie and nutrition tracking",
+  "Muscle map, training volume and streaks",
   "Personalised motivation notifications",
 ];
 

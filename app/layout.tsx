@@ -2,6 +2,13 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Big_Shoulders_Display, Chivo, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import StructuredData from "@/components/structured-data";
+import {
+  APP_STORE_ID,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 /* Condensed athletic display — carries the oversized headlines. */
 const display = Big_Shoulders_Display({
@@ -27,44 +34,57 @@ const mono = IBM_Plex_Mono({
   display: "swap",
 });
 
-// The live host. Open Graph and canonical URLs resolve against it, so it has
-// to be the domain actually being served — befit.ai is owned by someone else
-// and parked for sale. Vercel keeps serving this subdomain after a custom
-// domain is attached, so pointing a real domain here later breaks nothing.
-const SITE = "https://befit-web-gamma.vercel.app";
+const TITLE = "BeFit AI: AI Personal Trainer & Workout Tracker for iPhone";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "BeFit AI — Your personal trainer, in your pocket",
+    default: TITLE,
     template: "%s · BeFit AI",
   },
-  description:
-    "AI-built training plans that adapt to how you actually train. Log a session in seconds, track every lift, and get coaching that changes as you do.",
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  category: "health & fitness",
+  // Google ignores the keywords tag; it is kept for the engines and tools
+  // that still read it. The words that matter are on the page itself.
   keywords: [
     "AI personal trainer",
-    "workout app",
-    "fitness tracking",
-    "adaptive training plan",
+    "AI workout planner",
+    "workout tracker app",
+    "gym log app",
+    "workout plan generator",
+    "muscle map",
+    "calorie scanner",
     "strength training app",
+    "fitness app for iPhone",
+    "BeFit AI",
   ],
+  alternates: { canonical: "/" },
+  // iOS Safari shows a native "Open in App Store" banner for this app.
+  itunes: { appId: APP_STORE_ID },
   openGraph: {
     type: "website",
-    url: SITE,
-    siteName: "BeFit AI",
-    title: "BeFit AI — Your personal trainer, in your pocket",
-    description:
-      "AI-built training plans that adapt to how you actually train. Coaching that changes as you do.",
-    images: [{ url: "/opengraph-image.png", width: 1280, height: 832 }],
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeFit AI — Your personal trainer, in your pocket",
-    description:
-      "AI-built training plans that adapt to how you actually train.",
-    images: ["/twitter-image.png"],
+    title: TITLE,
+    description: SITE_DESCRIPTION,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -83,6 +103,7 @@ export default function RootLayout({
     >
       <body className="grain bg-ink font-sans text-bone antialiased">
         {children}
+        <StructuredData />
         <Analytics />
       </body>
     </html>

@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/image/model.jpg"
-          alt=""
+          alt="Athlete mid-workout — BeFit AI builds a personal training plan around the sessions you complete"
           fill
           priority
           quality={88}
@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="pb-14 md:pb-20">
           <p className="label rise mb-6 flex items-center gap-3" style={{ animationDelay: "80ms" }}>
             <span className="inline-block h-px w-10 bg-acid" />
-            Now on iPhone
+            AI personal trainer · Now on iPhone
           </p>
 
           <h1 className="display text-[clamp(3.4rem,13vw,11.5rem)]">
@@ -57,9 +57,10 @@ export default function Hero() {
             style={{ animationDelay: "480ms" }}
           >
             <p className="text-base leading-relaxed text-bone-dim md:text-lg">
-              Most plans are written once and never look at you again. BeFit
-              rebuilds yours from the sessions you actually complete — the lifts
-              you skip, the weight you add, the days you miss.
+              Most workout plans are written once and never look at you again.
+              BeFit is an AI workout planner and gym tracker that rebuilds your
+              plan from the sessions you actually complete — the lifts you skip,
+              the weight you add, the days you miss.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">

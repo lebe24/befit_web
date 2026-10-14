@@ -3,6 +3,7 @@ import { CONTACT } from "@/lib/legal";
 
 export const metadata = {
   title: "Support",
+  alternates: { canonical: "/support" },
   description:
     "Get help with BeFit AI — subscriptions, account deletion, restoring purchases, and how to reach a human.",
 };

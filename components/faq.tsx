@@ -3,29 +3,9 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Reveal from "./reveal";
+import { FAQ_ITEMS as ITEMS } from "@/lib/faq-data";
 
-const ITEMS = [
-  {
-    q: "Do I need a gym?",
-    a: "No. Tell it what you have — a full rack, a pair of dumbbells, or nothing but floor space — and the plan is built around that. Change your equipment later and it rewrites itself.",
-  },
-  {
-    q: "How is this different from a plan I'd find online?",
-    a: "A written plan is a snapshot. BeFit reads every session you log and adjusts the next one: loads that go up when you're progressing, volume that backs off when you've missed a week, substitutes when a machine is taken.",
-  },
-  {
-    q: "I'm a complete beginner. Is it going to be too much?",
-    a: "It scales to where you are. Beginners get fewer movements, longer rest and form guidance on every lift, and you can ask the coach why anything is programmed the way it is.",
-  },
-  {
-    q: "What happens to my data?",
-    a: "Your training history is yours. It is used to personalise your plan and nothing else — not sold, not shared with advertisers. You can delete your account and everything in it from inside the app.",
-  },
-  {
-    q: "Can I cancel?",
-    a: "Any time, from your App Store subscription settings. You keep access until the end of the period you've already paid for.",
-  },
-];
+
 
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);

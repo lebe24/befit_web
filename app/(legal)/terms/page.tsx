@@ -11,6 +11,7 @@ import {
 
 export const metadata = {
   title: "Terms of Use",
+  alternates: { canonical: "/terms" },
   description:
     "The agreement between you and BeFit AI — subscriptions, auto-renewal, cancellation, and what the app does and does not claim to be.",
 };
